@@ -34,7 +34,7 @@ public class WeatherReportController {
 
     @GetMapping("/getDataById")
     public ModelAndView getDataById(String id , Model model) throws Exception{
-        
+
         model.addAttribute("title" , "鹤岗小商品-天气预报系统") ;
         model.addAttribute("cityId" , id ) ;
         model.addAttribute("cityList" , cityDataService.listCity() );
