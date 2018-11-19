@@ -31,4 +31,16 @@ public interface WeatherDataService {
     */
     WeatherResponse getDataByCityName(String cityName) ;
 
+
+    /**
+    *DESC: 根据城市ID同步数据
+    *@author hou.linan
+    *@date:  2018/11/15 21:41
+    *@param:  [cityId]
+    *@return:  void
+    */
+    void syncDataByCityId(String cityId) ;
+
+
+
 }

@@ -29,7 +29,7 @@ public class QuartzConfiguration {
         //创建schedBuilder参数
         SimpleScheduleBuilder schedBuilder = SimpleScheduleBuilder.simpleSchedule()
                 //可以填写秒数，多少秒执行一次
-                .withIntervalInSeconds(2).repeatForever();
+                .withIntervalInMinutes(1).repeatForever();
 
         return TriggerBuilder.newTrigger().forJob(weatherDataSyncJobDetail())
                 .withIdentity("weatherDataSyncTrigger").withSchedule(schedBuilder).build();

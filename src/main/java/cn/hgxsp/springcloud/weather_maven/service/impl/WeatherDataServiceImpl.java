@@ -2,6 +2,7 @@ package cn.hgxsp.springcloud.weather_maven.service.impl;
 
 
 import cn.hgxsp.springcloud.weather_maven.resultVO.WeatherResponse;
+import cn.hgxsp.springcloud.weather_maven.service.CityDataService;
 import cn.hgxsp.springcloud.weather_maven.service.WeatherDataService;
 import cn.hgxsp.springcloud.weather_maven.utils.RedisOperator;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +30,7 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     @Autowired
     private RedisOperator redisOperator ;
 
+
     @Value("${getWeatherUrl}")
     private String getWeatherUrl ;
 
@@ -46,6 +48,19 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     public WeatherResponse getDataByCityName(String cityName) {
         return doGetWeather(cityName , GETBYNAMETYPE) ;
     }
+
+
+
+    @Override
+    public void syncDataByCityId(String cityId) {
+        saveWeatherDataToRedis(cityId) ;
+    }
+
+
+    private void saveWeatherDataToRedis(String cityID){
+        getDataByCityId(cityID) ;
+    }
+
 
 
     /**
@@ -88,6 +103,8 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         return resp;
 
     }
+
+
 
 
 
