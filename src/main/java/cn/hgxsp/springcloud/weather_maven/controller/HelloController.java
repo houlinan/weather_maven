@@ -22,6 +22,9 @@ public class HelloController {
     @RequestMapping("/hello")
     public String hello() {
         System.out.println();
+
+
+
         
         redisOperator.set("11111" ,"32132131232132112sdadasd");
         return "hello";
